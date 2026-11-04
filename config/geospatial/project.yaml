@@ -1,0 +1,64 @@
+project:
+  name: "AQUILA"
+  long_name: "Urban Flood Intelligence, Infrastructure Monitoring and Emergency Response Platform"
+  classification: "Academic Decision-Support Prototype"
+  version: "0.2.0"
+  phase: "Phase 2 - Geospatial Preparation and Validation"
+
+study_area:
+  name: "Manikonda Pilot Catchment"
+  district: "Ranga Reddy"
+  mandal: "Gandipet"
+  state: "Telangana"
+  country: "India"
+  bounding_box:
+    min_longitude: 78.3500
+    min_latitude: 17.3650
+    max_longitude: 78.4150
+    max_latitude: 17.4200
+  centroid:
+    latitude: 17.3925
+    longitude: 78.3825
+  buffer_metres: 500.0
+
+spatial_reference_systems:
+  storage_crs: "EPSG:4326"
+  storage_crs_name: "WGS 84 (Geographic Lat/Lon)"
+  projected_crs: "EPSG:32644"
+  projected_crs_name: "WGS 84 / UTM Zone 44N"
+  linear_unit: "metre"
+
+provenance_classifications:
+  - "OBSERVED"
+  - "HISTORICAL"
+  - "MANUALLY_SEEDED"
+  - "SIMULATED"
+  - "MODEL_ESTIMATE"
+
+processing_parameters:
+  dem:
+    raw_tile: "Copernicus_DSM_COG_10_N17_00_E078_00_DEM.tif"
+    vertical_unit: "metre"
+    resolution_metres: 30.0
+    nodata_value: -99999.0
+  roads:
+    highway_types:
+      - "motorway"
+      - "trunk"
+      - "primary"
+      - "secondary"
+      - "tertiary"
+      - "residential"
+      - "service"
+      - "unclassified"
+    connectivity_threshold_percent: 90.0
+  drainage:
+    default_buffer_metres: 25.0
+    storm_hazard_buffer_metres: 75.0
+  routing:
+    vehicle_clearance_depths:
+      light_utility_max_depth_m: 0.20
+      heavy_rescue_truck_max_depth_m: 0.60
+      amphibious_max_depth_m: 99.0
+    severance_depth_m: 0.30
+

@@ -1,0 +1,155 @@
+{
+  "timestamp": "2026-11-03T22:00:00Z",
+  "overall_status": "PASS",
+  "vector_layers": {
+    "roads": {
+      "status": "PASS",
+      "feature_count": 6659,
+      "invalid_geometries": 0,
+      "out_of_bounds_features": 0,
+      "invalid_provenance_count": 0,
+      "provenances_detected": [
+        "OBSERVED"
+      ],
+      "file": "roads_manikonda_processed.geojson"
+    },
+    "drainage": {
+      "status": "PASS",
+      "feature_count": 21,
+      "invalid_geometries": 0,
+      "out_of_bounds_features": 0,
+      "invalid_provenance_count": 0,
+      "provenances_detected": [
+        "OBSERVED"
+      ],
+      "file": "drainage_manikonda_processed.geojson"
+    },
+    "water_bodies": {
+      "status": "PASS",
+      "feature_count": 24,
+      "invalid_geometries": 0,
+      "out_of_bounds_features": 0,
+      "invalid_provenance_count": 0,
+      "provenances_detected": [
+        "OBSERVED"
+      ],
+      "file": "water_bodies_manikonda_processed.geojson"
+    },
+    "infrastructure": {
+      "status": "PASS",
+      "feature_count": 65,
+      "invalid_geometries": 0,
+      "out_of_bounds_features": 0,
+      "invalid_provenance_count": 0,
+      "provenances_detected": [
+        "OBSERVED"
+      ],
+      "file": "infrastructure_manikonda_processed.geojson"
+    },
+    "monitoring_locations": {
+      "status": "PASS",
+      "feature_count": 5,
+      "invalid_geometries": 0,
+      "out_of_bounds_features": 0,
+      "invalid_provenance_count": 0,
+      "provenances_detected": [
+        "MANUALLY_SEEDED",
+        "OBSERVED",
+        "SIMULATED"
+      ],
+      "file": "monitoring_locations_processed.geojson"
+    },
+    "flood_evidence": {
+      "status": "PASS",
+      "feature_count": 5,
+      "invalid_geometries": 0,
+      "out_of_bounds_features": 0,
+      "invalid_provenance_count": 0,
+      "provenances_detected": [
+        "HISTORICAL"
+      ],
+      "file": "historical_flood_points_processed.geojson"
+    },
+    "study_area_bbox": {
+      "status": "PASS",
+      "feature_count": 1,
+      "invalid_geometries": 0,
+      "out_of_bounds_features": 0,
+      "invalid_provenance_count": 0,
+      "provenances_detected": [
+        "MANUALLY_SEEDED"
+      ],
+      "file": "study_area_bbox.geojson"
+    },
+    "settlements": {
+      "status": "PASS",
+      "feature_count": 5,
+      "invalid_geometries": 0,
+      "out_of_bounds_features": 0,
+      "invalid_provenance_count": 0,
+      "provenances_detected": [
+        "OBSERVED"
+      ],
+      "file": "manikonda_settlements_processed.geojson"
+    }
+  },
+  "raster_layers": {
+    "DEM": {
+      "status": "PASS",
+      "crs": "EPSG:4326",
+      "dimensions": [
+        266,
+        230
+      ],
+      "min_value": 492.69,
+      "max_value": 638.65,
+      "nodata_value": null,
+      "file": "dem_manikonda_clipped.tif"
+    },
+    "Slope": {
+      "status": "PASS",
+      "crs": "EPSG:4326",
+      "dimensions": [
+        266,
+        230
+      ],
+      "min_value": 0.0,
+      "max_value": 36.85,
+      "nodata_value": -9999.0,
+      "file": "slope_degrees_manikonda.tif"
+    },
+    "WorldCover": {
+      "status": "PASS",
+      "crs": "EPSG:4326",
+      "dimensions": [
+        888,
+        768
+      ],
+      "min_value": 10.0,
+      "max_value": 80.0,
+      "nodata_value": 0.0,
+      "file": "worldcover_manikonda_clipped.tif"
+    }
+  },
+  "rainfall_datasets": {
+    "historical": {
+      "status": "PASS",
+      "rows": 8,
+      "provenance": "HISTORICAL",
+      "max_rate_mm_hr": 64.0
+    },
+    "synthetic": {
+      "status": "PASS",
+      "rows": 13,
+      "provenance": "SIMULATED",
+      "peak_rate_mm_hr": 70.0
+    }
+  },
+  "summary": {
+    "total_vector_layers": 8,
+    "total_vector_features": 6785,
+    "total_raster_layers": 3,
+    "road_network_connectivity_pct": 94.7,
+    "total_failures": 0
+  }
+}

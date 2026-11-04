@@ -1,0 +1,289 @@
+{
+  "project": "AQUILA",
+  "phase": "Phase 2 - Data Collection, Geospatial Preparation & Data Validation",
+  "timestamp_generated": "2026-11-03T22:00:00Z",
+  "study_area": {
+    "name": "Manikonda Pilot Study Area",
+    "bbox": [
+      78.3455,
+      17.3605,
+      78.4195,
+      17.4245
+    ],
+    "area_km2": 55.63,
+    "crs_storage": "EPSG:4326",
+    "crs_projected": "EPSG:32644"
+  },
+  "datasets_total": 12,
+  "provenance_distribution": {
+    "OBSERVED": 7,
+    "HISTORICAL": 2,
+    "MANUALLY_SEEDED": 2,
+    "SIMULATED": 1,
+    "MODEL_ESTIMATE": 0
+  },
+  "datasets": [
+    {
+      "dataset_id": "SRC-DEM-COP30",
+      "dataset_name": "Copernicus Digital Elevation Model GLO-30",
+      "category": "Elevation / Terrain",
+      "provider": "European Space Agency (ESA) / Copernicus Programme",
+      "source_url": "https://copernicus-dem-30m.s3.amazonaws.com/Copernicus_DSM_COG_10_N17_00_E078_00_DEM/Copernicus_DSM_COG_10_N17_00_E078_00_DEM.tif",
+      "download_date": "2026-11-03",
+      "observation_date": "2011-2015 (TanDEM-X baseline)",
+      "license": "Open Data (ODC-BY / Copernicus Open Access)",
+      "format": "Cloud-Optimized GeoTIFF",
+      "crs": "EPSG:4326",
+      "resolution": "30-metre (1 arc-second)",
+      "geographic_coverage": "Lat 17.3605-17.4245, Lon 78.3455-78.4195 (55.63 km\u00b2)",
+      "processing_status": "PROCESSED_AND_VALIDATED",
+      "verification_status": "VERIFIED_SATELLITE_OBSERVATION",
+      "provenance": "OBSERVED",
+      "output_file_path": "data/processed/raster/dem_manikonda_clipped.tif",
+      "auxiliary_outputs": [
+        "data/processed/raster/slope_degrees_manikonda.tif"
+      ],
+      "known_limitations": "Digital Surface Model (DSM) includes tree canopy and building heights; 30m resolution cannot resolve individual urban gutters, curbs, or micro-topography."
+    },
+    {
+      "dataset_id": "SRC-ESA-WORLDCOVER",
+      "dataset_name": "ESA WorldCover 10m 2021 v200",
+      "category": "Land Use / Land Cover",
+      "provider": "European Space Agency (ESA)",
+      "source_url": "https://esa-worldcover.s3.amazonaws.com/v200/2021/map/ESA_WorldCover_10m_2021_v200_N15E078_Map.tif",
+      "download_date": "2026-11-03",
+      "observation_date": "2021",
+      "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+      "format": "Cloud-Optimized GeoTIFF",
+      "crs": "EPSG:4326",
+      "resolution": "10-metre",
+      "geographic_coverage": "Lat 17.3605-17.4245, Lon 78.3455-78.4195 (55.63 km\u00b2)",
+      "processing_status": "PROCESSED_AND_VALIDATED",
+      "verification_status": "VERIFIED_SATELLITE_OBSERVATION",
+      "provenance": "OBSERVED",
+      "output_file_path": "data/processed/raster/worldcover_manikonda_clipped.tif",
+      "auxiliary_outputs": [
+        "data/processed/vector/landcover_summary.json"
+      ],
+      "known_limitations": "10m cell size blends narrow vegetated verges into built fabric; single 2021 epoch does not capture 2022-2025 rapid construction."
+    },
+    {
+      "dataset_id": "SRC-OSM-ROADS",
+      "dataset_name": "OpenStreetMap Manikonda Road Network",
+      "category": "Transportation Network",
+      "provider": "OpenStreetMap Contributors",
+      "source_url": "https://overpass-api.de/api/interpreter",
+      "download_date": "2026-11-03",
+      "observation_date": "2026 (Live OSM planet database)",
+      "license": "Open Database License (ODbL) 1.0",
+      "format": "GeoJSON",
+      "crs": "EPSG:4326",
+      "resolution": "Vector LineString / Network Graph",
+      "geographic_coverage": "Manikonda Pilot Envelope (6,659 road segments, 48,391 edges)",
+      "processing_status": "PROCESSED_AND_VALIDATED",
+      "verification_status": "COMMUNITY_VERIFIED_94.7%_CONNECTIVITY",
+      "provenance": "OBSERVED",
+      "output_file_path": "data/processed/vector/roads_manikonda_processed.geojson",
+      "auxiliary_outputs": [
+        "data/processed/vector/roads_validation_report.json"
+      ],
+      "known_limitations": "Incomplete lane width, surface condition, and culvert crest elevation tags; flood depth thresholds must be modeled analytically."
+    },
+    {
+      "dataset_id": "SRC-OSM-DRAINAGE",
+      "dataset_name": "OpenStreetMap Waterways and Natural Channels",
+      "category": "Drainage Infrastructure",
+      "provider": "OpenStreetMap Contributors",
+      "source_url": "https://overpass-api.de/api/interpreter",
+      "download_date": "2026-11-03",
+      "observation_date": "2026",
+      "license": "ODbL 1.0",
+      "format": "GeoJSON",
+      "crs": "EPSG:4326",
+      "resolution": "Vector LineString (21 waterway features, 9.71 km total)",
+      "geographic_coverage": "Manikonda Pilot Study Area",
+      "processing_status": "PROCESSED_AND_VALIDATED",
+      "verification_status": "DOCUMENTED_PARTIAL_COVERAGE",
+      "provenance": "OBSERVED",
+      "output_file_path": "data/processed/vector/drainage_manikonda_processed.geojson",
+      "auxiliary_outputs": [
+        "data/processed/vector/drainage_validation_report.json"
+      ],
+      "known_limitations": "CRITICAL GAP: Only 21 major surface channels mapped. Subsurface closed stormwater drains, roadside gutters, and micro-culverts are almost entirely absent in public OSM."
+    },
+    {
+      "dataset_id": "SRC-OSM-WATERBODIES",
+      "dataset_name": "OpenStreetMap Lakes and Retention Basins",
+      "category": "Hydrology / Water Bodies",
+      "provider": "OpenStreetMap Contributors / HMDA Survey",
+      "source_url": "https://overpass-api.de/api/interpreter",
+      "download_date": "2026-11-03",
+      "observation_date": "2026",
+      "license": "ODbL 1.0",
+      "format": "GeoJSON",
+      "crs": "EPSG:4326",
+      "resolution": "Vector Polygon (24 water bodies, 1.51 km\u00b2 total)",
+      "geographic_coverage": "Manikonda Pilot Study Area (Neknampur Lake, Puppalaguda Cheruvu, etc.)",
+      "processing_status": "PROCESSED_AND_VALIDATED",
+      "verification_status": "VERIFIED_SURFACE_WATERBODIES",
+      "provenance": "OBSERVED",
+      "output_file_path": "data/processed/vector/water_bodies_manikonda_processed.geojson",
+      "auxiliary_outputs": [
+        "data/processed/vector/water_bodies_validation_report.json"
+      ],
+      "known_limitations": "Does not reflect seasonal shrinkage, sedimentation, or weed cover (water hyacinth) affecting retention capacity."
+    },
+    {
+      "dataset_id": "SRC-OSM-INFRA",
+      "dataset_name": "Critical Infrastructure Facilities",
+      "category": "Critical Infrastructure",
+      "provider": "OpenStreetMap Contributors",
+      "source_url": "https://overpass-api.de/api/interpreter",
+      "download_date": "2026-11-03",
+      "observation_date": "2026",
+      "license": "ODbL 1.0",
+      "format": "GeoJSON",
+      "crs": "EPSG:4326",
+      "resolution": "Vector Point (65 validated facilities)",
+      "geographic_coverage": "Manikonda Pilot Study Area",
+      "processing_status": "PROCESSED_AND_VALIDATED",
+      "verification_status": "OSM_UNVERIFIED",
+      "provenance": "OBSERVED",
+      "output_file_path": "data/processed/vector/infrastructure_manikonda_processed.geojson",
+      "auxiliary_outputs": [
+        "data/processed/vector/infrastructure_validation_report.json"
+      ],
+      "known_limitations": "Emergency capability and operational readiness during disaster conditions have not been verified via physical site inspection."
+    },
+    {
+      "dataset_id": "SRC-TGDPS-RAIN-HIST",
+      "dataset_name": "TGDPS / IMD October 2020 Historical Rainfall Records",
+      "category": "Meteorology / Rainfall",
+      "provider": "Telangana Development Planning Society / India Meteorological Department",
+      "source_url": "https://tsdps.telangana.gov.in/",
+      "download_date": "2026-11-03",
+      "observation_date": "2020-10-13 to 2020-10-14",
+      "license": "Public Government Weather Archive",
+      "format": "CSV",
+      "crs": "EPSG:4326",
+      "resolution": "Hourly Point Observations (4 proxy stations)",
+      "geographic_coverage": "Western Hyderabad Corridor (Gachibowli, Serilingampally, Begumpet, Rajendranagar)",
+      "processing_status": "PROCESSED_AND_VALIDATED",
+      "verification_status": "OFFICIAL_HISTORICAL_STATION_RECORDS",
+      "provenance": "HISTORICAL",
+      "output_file_path": "data/processed/vector/rainfall_historical_validated.csv",
+      "auxiliary_outputs": [
+        "data/processed/vector/rainfall_validation_report.json"
+      ],
+      "known_limitations": "No physical AWS station exists within core Manikonda municipal polygon; records serve as nearest spatial proxies (3.8-13.5 km distance)."
+    },
+    {
+      "dataset_id": "SRC-SCN-RAIN-SIM",
+      "dataset_name": "AQUILA Synthetic Design Storm Hyetograph (120mm / 3hr)",
+      "category": "Simulation / Scenario",
+      "provider": "AQUILA Research Simulation Engine",
+      "source_url": "Internal Algorithm (Chicago Design Storm)",
+      "download_date": "2026-11-03",
+      "observation_date": "N/A (Synthetic Scenario)",
+      "license": "Academic Project Open Data",
+      "format": "CSV",
+      "crs": "N/A (Temporal Profile)",
+      "resolution": "15-minute Time Steps (13 steps, peak 70 mm/hr)",
+      "geographic_coverage": "Uniform catchment test loading",
+      "processing_status": "PROCESSED_AND_VALIDATED",
+      "verification_status": "SYNTHETIC_TEST_PROFILE",
+      "provenance": "SIMULATED",
+      "output_file_path": "data/processed/vector/rainfall_synthetic_hyetograph_validated.csv",
+      "auxiliary_outputs": [
+        "data/processed/vector/rainfall_synthetic_report.json"
+      ],
+      "known_limitations": "Illustrative stress test scenario; not an official IMD return-period IDF curve."
+    },
+    {
+      "dataset_id": "SRC-NRSC-FLOOD-2020",
+      "dataset_name": "Historical Flood Evidence (October 2020 Floods)",
+      "category": "Historical Inundation",
+      "provider": "NRSC Bhuvan / GHMC Field Logs / Traffic Advisories",
+      "source_url": "https://www.nrsc.gov.in/nrscnew/Apps_DMS.php?lang_code=en",
+      "download_date": "2026-11-03",
+      "observation_date": "2020-10-14",
+      "license": "Government Public Information",
+      "format": "GeoJSON",
+      "crs": "EPSG:4326",
+      "resolution": "Point Locations (5 verified field observations)",
+      "geographic_coverage": "Manikonda, Puppalaguda, Shaikpet, ORR Underpass",
+      "processing_status": "PROCESSED_AND_VALIDATED",
+      "verification_status": "VERIFIED_HISTORICAL",
+      "provenance": "HISTORICAL",
+      "output_file_path": "data/processed/vector/historical_flood_points_processed.geojson",
+      "auxiliary_outputs": [
+        "data/processed/vector/flood_evidence_validation_report.json"
+      ],
+      "known_limitations": "Discrete ground truth points; cloud cover and urban canyon shadowing restrict optical/radar continuous satellite inundation polygons."
+    },
+    {
+      "dataset_id": "SRC-MONITOR-LOCS",
+      "dataset_name": "AQUILA Multi-Tier Monitoring Locations",
+      "category": "Sensor Network",
+      "provider": "AQUILA Project Inventory",
+      "source_url": "Multi-tier synthesis",
+      "download_date": "2026-11-03",
+      "observation_date": "2026",
+      "license": "Academic Project Open Data",
+      "format": "GeoJSON",
+      "crs": "EPSG:4326",
+      "resolution": "Vector Point (5 stations: 2 OBSERVED AWS, 2 MANUALLY_SEEDED proposed, 1 SIMULATED)",
+      "geographic_coverage": "Manikonda pilot and perimeter",
+      "processing_status": "PROCESSED_AND_VALIDATED",
+      "verification_status": "MULTI_TIER_PROVENANCE_TAGGED",
+      "provenance": "MANUALLY_SEEDED",
+      "output_file_path": "data/processed/vector/monitoring_locations_processed.geojson",
+      "auxiliary_outputs": [
+        "data/processed/vector/monitoring_locations_validation_report.json"
+      ],
+      "known_limitations": "Proposed gauges (MON-PILOT-01, MON-PILOT-02) are academic deployment recommendations and do not represent active field telemetry."
+    },
+    {
+      "dataset_id": "SRC-BOUND-BBOX",
+      "dataset_name": "Manikonda Pilot Study Area Analysis Envelope",
+      "category": "Geospatial Boundary",
+      "provider": "AQUILA Project Definition",
+      "source_url": "config/geospatial/project.yaml",
+      "download_date": "2026-11-03",
+      "observation_date": "2026",
+      "license": "Academic Project Open Data",
+      "format": "GeoJSON",
+      "crs": "EPSG:4326",
+      "resolution": "Vector Polygon (55.63 km\u00b2)",
+      "geographic_coverage": "Lat 17.3605-17.4245, Lon 78.3455-78.4195",
+      "processing_status": "PROCESSED_AND_VALIDATED",
+      "verification_status": "DEFINED_PROJECT_BOUNDING_BOX",
+      "provenance": "MANUALLY_SEEDED",
+      "output_file_path": "data/processed/vector/study_area_bbox.geojson",
+      "auxiliary_outputs": [
+        "data/processed/vector/study_area_notes.json"
+      ],
+      "known_limitations": "Rectangular modeling envelope; distinct from official municipal cadastral boundaries and natural topographic watershed ridgelines."
+    },
+    {
+      "dataset_id": "SRC-OSM-SETTLEMENTS",
+      "dataset_name": "Manikonda Settlement Place Centroids",
+      "category": "Administrative Centroids",
+      "provider": "OpenStreetMap Contributors",
+      "source_url": "https://overpass-api.de/api/interpreter",
+      "download_date": "2026-11-03",
+      "observation_date": "2026",
+      "license": "ODbL 1.0",
+      "format": "GeoJSON",
+      "crs": "EPSG:4326",
+      "resolution": "Vector Points (5 settlements: Manikonda, Puppalaguda, Neknampur, Alkapur)",
+      "geographic_coverage": "Core Manikonda municipal localities",
+      "processing_status": "PROCESSED_AND_VALIDATED",
+      "verification_status": "OBSERVED_SETTLEMENT_CENTROID",
+      "provenance": "OBSERVED",
+      "output_file_path": "data/processed/vector/manikonda_settlements_processed.geojson",
+      "auxiliary_outputs": [],
+      "known_limitations": "Point centroids only; polygon municipal boundaries are proprietary to GHMC/Survey of India."
+    }
+  ]
+}

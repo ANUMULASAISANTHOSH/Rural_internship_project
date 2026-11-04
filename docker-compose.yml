@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  aquila-api:
+    build: .
+    container_name: aquila-api-server
+    ports:
+      - "8000:8000"
+    environment:
+      - AQUILA_ENV=production
+      - AQUILA_HOST=0.0.0.0
+      - AQUILA_PORT=8000
+      - AQUILA_DB_PATH=aquila_mvp.db
+      - AQUILA_CORS_ORIGINS=http://localhost:8501,http://127.0.0.1:8501
+    volumes:
+      - ./data:/app/data:ro
+      - ./aquila_mvp.db:/app/aquila_mvp.db
+    restart: unless-stopped
+
+  aquila-dashboard:
+    build: .
+    container_name: aquila-dashboard
+    command: ["streamlit", "run", "app/dashboard/main.py", "--server.port=8501", "--server.address=0.0.0.0"]
+    ports:
+      - "8501:8501"
+    environment:
+      - AQUILA_ENV=production
+      - AQUILA_DB_PATH=aquila_mvp.db
+    volumes:
+      - ./data:/app/data:ro
+      - ./aquila_mvp.db:/app/aquila_mvp.db
+    depends_on:
+      - aquila-api
+    restart: unless-stopped
+
